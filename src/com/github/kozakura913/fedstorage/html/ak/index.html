@@ -1,0 +1,111 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>    
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="freq-color.css">
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.loadtemplate@1.5.10/dist/jquery.loadTemplate.min.js"></script>    
+
+    <script>
+        const item_storage = 
+        [
+            {
+                "id":"BLACK,BLACK,WHITE",
+                "size":10,
+                "antenna1":"black",
+                "antenna2":"black",
+                "antenna3":"white",
+                "diff":"add",
+                "difference":"±1",
+            },
+            {
+                "id":"BLACK,BLACK,BLACK",
+                "size":20,
+                "antenna1":"black",
+                "antenna2":"black",
+                "antenna3":"black",
+                "diff":"sub",
+                "difference":"±5",
+            },
+            {
+                "id":"WHITE,WHITE,WHITE",
+                "size":0,
+                "antenna1":"white",
+                "antenna2":"white",
+                "antenna3":"white",
+                "diff":"zero",
+                "difference":"0",
+            },
+            {
+                "id":"BLUE,WHITE,WHITE",
+                "size":0,
+                "antenna1":"blue",
+                "antenna2":"white",
+                "antenna3":"white",
+                "diff":"sub",
+                "difference":"±5",
+            }
+        ]
+;
+const fluid_storage = 
+        [ 
+            {
+                "id":"LIME,BLUE,BLUE",
+                "size":0,
+                "antenna1":"lime",
+                "antenna2":"blue",
+                "antenna3":"blue",
+                "diff":"zero",
+                "difference":"0",
+            },
+            {
+                "id":"LIME,LIME,LIME",
+                "size":1,
+                "antenna1":"lime",
+                "antenna2":"lime",
+                "antenna3":"lime",
+                "diff":"add",
+                "difference":"1",
+            }
+        ]
+;
+    </script>
+</head>
+<body>
+<template id="storage">
+    <table class="storage">
+        <thead>
+            <tr>
+                <th class="freq" data-class="antenna1"></th>
+                <th class="freq" data-class="antenna2"></th>
+                <th class="freq" data-class="antenna3"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="item" colspan="3">
+                    <span class="size" data-content="size"></span>
+                    <span class="diff-value" data-class="diff" data-content="difference"></span>
+                </td>
+            </tr>    
+        </tbody>
+    </table>
+</template>
+<h2>Item Information</h2>
+<hr>
+<div id="items"></div>
+<br>
+<h2>Fluid Information</h2>
+<hr>
+<div id="fluids"></div>
+
+<script>
+    $("#items").loadTemplate($("#storage"), item_storage);
+    $("#fluids").loadTemplate($("#storage"), fluid_storage);
+</script>
+</body>
+</html>
